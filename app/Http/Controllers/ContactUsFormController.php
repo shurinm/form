@@ -6,7 +6,8 @@ use App\Models\Form;
 class ContactUsFormController extends Controller {
     // Create Contact Form
     public function createForm(Request $request) {
-      return view('welcome');
+      $message = Form::orderBy('created_at','desc')->get();
+      return view('welcome', compact('message'));
     }
     // Store Contact Form data
     public function ContactUsForm(Request $request) {
