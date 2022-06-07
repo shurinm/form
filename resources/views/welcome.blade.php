@@ -11,6 +11,7 @@
 <body>
     <div class="container mt-5">
         <!-- Success message -->
+<<<<<<< HEAD
         <form action="" method="post" action="{{ route('form.store') }}">
             <!-- CROSS Site Request Forgery Protection -->
             @csrf
@@ -18,6 +19,20 @@
                 <label>Name</label>
                 <input type="text" class="form-control" name="name" id="name">
             </div>
+=======
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{Session::get('success')}}
+            </div>
+        @endif
+        <form action="" method="post" action="{{ route('form.store') }}">
+            <!-- CROSS Site Request Forgery Protection -->
+            @csrf
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>
+>>>>>>> 50d0443dba57495da2b334dd0cd570f895826a36
             <div class="form-group">
                 <label>Message</label>
                 <textarea class="form-control" name="message" id="message" rows="4"></textarea>
