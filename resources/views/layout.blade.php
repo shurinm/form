@@ -57,12 +57,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Логин</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
-                    </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}">Выход</a>

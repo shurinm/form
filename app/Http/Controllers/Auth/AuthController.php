@@ -20,18 +20,7 @@ class AuthController extends Controller
     public function index()
     {
         return view('auth.login');
-    }  
-      
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function registration()
-    {
-        return view('auth.registration');
-    }
-      
+    }   
     /**
      * Write code on Method
      *
@@ -52,26 +41,6 @@ class AuthController extends Controller
   
         return redirect("login")->withSuccess('Не верные имя или пароль!');
     }
-      
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function postRegistration(Request $request)
-    {  
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
-           
-        $data = $request->all();
-        $check = $this->create($data);
-         
-        return redirect("dashboard")->withSuccess('Вы успешно вошли в админ панель!');
-    }
-    
     /**
      * Write code on Method
      *
@@ -86,21 +55,6 @@ class AuthController extends Controller
   
         return redirect("login")->withSuccess('Нет доступа!');
     }
-    
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function create(array $data)
-    {
-      return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password'])
-      ]);
-    }
-    
     /**
      * Write code on Method
      *
@@ -110,8 +64,13 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
   
-        return Redirect('login');
+        return Redirect('welcome');
     }
+        /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     public function destroy($id)
     {
         $form = Form::findOrFail($id);
