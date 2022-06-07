@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="container mt-5">
+                        <a href="{{ route('login') }}">Вход в админку</a>
         <!-- Success message -->
         <form action="" method="post" action="{{ route('form.store') }}">
             <!-- CROSS Site Request Forgery Protection -->
