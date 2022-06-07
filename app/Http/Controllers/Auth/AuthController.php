@@ -112,4 +112,10 @@ class AuthController extends Controller
   
         return Redirect('login');
     }
+    public function destroy($id)
+    {
+        $form = Form::findOrFail($id);
+        $form->delete();
+        return redirect('/dashboard')->with('Успех', 'Запись удалена!');
+    }
 }
