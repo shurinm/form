@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Form;
   
 class AuthController extends Controller
 {
@@ -79,7 +80,8 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('auth.dashboard');
+            $message = Form::orderBy('created_at','desc')->get();
+            return view('auth.dashboard', compact('message'));
         }
   
         return redirect("login")->withSuccess('Нет доступа!');

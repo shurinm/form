@@ -13,8 +13,28 @@
                             {{ session('success') }}
                         </div>
                     @endif
-  
-                    Вы успешно авторизированы!
+                    
+                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th class="th-sm">Имя
+      </th>
+      <th class="th-sm">Сообщение
+      </th>
+      <th class="th-sm">Дата
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach($message as $message)
+    <tr>
+      <td>{{$message->name}}</td>
+      <td>{{$message->message}}</td>
+      <td>{{$message->created_at}}</td>
+    </tr>
+    @endforeach
+    </tbody>
+</table>
                 </div>
             </div>
         </div>
