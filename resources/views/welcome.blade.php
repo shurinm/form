@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="{{ asset('js/script.js') }}" type="text/javascript"></script>
 </head>
 <body>
     <div class="container mt-5">
@@ -23,29 +27,35 @@
                 <label>Сообщение</label>
                 <textarea class="form-control" name="message" id="message" rows="4"></textarea>
             </div>
-            <input type="submit" name="send" value="Submit" class="btn btn-dark btn-block">
+            <input type="submit" name="send" value="Добавить" class="btn btn-dark btn-block">
         </form>
-        <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-  <thead>
-    <tr>
-      <th class="th-sm">Имя
-      </th>
-      <th class="th-sm">Сообщение
-      </th>
-      <th class="th-sm">Дата
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($message as $message)
+        <div class="container">
+  <div class="row">
+    
+    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Сообщение</th>
+          <th>Дата</th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach($message as $message)
     <tr>
       <td>{{$message->name}}</td>
       <td>{{$message->message}}</td>
       <td>{{$message->created_at}}</td>
     </tr>
     @endforeach
-    </tbody>
-</table>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+
     </div>
 </body>
 </html>
